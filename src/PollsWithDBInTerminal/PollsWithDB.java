@@ -1,18 +1,22 @@
 package PollsWithDBInTerminal;
-
 import java.sql.*;
 import java.util.Scanner;
+
+import PollsWithDBInTerminal.terminalpolls.PollList;
+import PollsWithDBInTerminal.terminalpolls.PollPeople;
+import PollsWithDBInTerminal.terminalpolls.PollStatistics;
 
 public class PollsWithDB {
     public static void main(String[] args) {
         try {
             // sql (url, user, password 변수 저장)
-            String url = "jdbc:mysql://127.0.0.1:3306/db_cars";
+            String url = "jdbc:mysql://127.0.0.1:3306/db_polls";
             String user = "root";
             String password = "!yojulab*";
 
             // sql 연결
             Connection connection = DriverManager.getConnection(url, user, password);
+            System.out.println("DB연결 성공\n");
             // statement : edit 생성
             Statement statement = connection.createStatement();
 
@@ -24,21 +28,28 @@ public class PollsWithDB {
 
             // Scanner 인스턴스 및 Scanner 변수 : in 설정.
             Scanner in = new Scanner(System.in);
-            String key = ""; // key 에 변수 초기화
+            
+            // 함수 인스턴스화
+            PollStatistics pollStatistics = new PollStatistics();
+            PollList pollList = new PollList();
+            PollPeople pollPeople = new PollPeople();
+
+            String key = " "; // key 에 변수 초기화
             System.out.println("------ 작동 key ------");
             System.out.println("(E)xit : 종료");
             System.out.println("(P)oll : 설문 시작");
             System.out.println("(S)tatistic : 설문 통계");
             while (!(key.equals("E") || key.equals("Exit"))) {
-                System.out.println("선택 입력 : ");
+                System.out.print("선택 입력 : ");
                 key = in.nextLine(); // key 입력 받기
                 // P 랑 Poll 입력시 안에 if 문 실행
                 if (key.equals("P") || key.equals("Poll")) {
-
+                    System.out.println();
                 }
                 // S 랑 Statistic 입력시 else if 문 실행
                 else if (key.equals("S") || key.equals("Statistic")) {
-
+                    int user_c = pollStatistics.users_count(statement);
+                    int answer_c = pollStatistics.answer_count(statement);
                 }
                 // 그 외 입력 값에 대한 처리.
                 else {
