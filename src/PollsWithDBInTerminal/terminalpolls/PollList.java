@@ -22,8 +22,14 @@ public class PollList {
                     "ORDER BY QUESTION, ANSWER";
             resultSet = statement.executeQuery(query);
 
+            
             HashMap <String, String>que_ans = new HashMap<String, String>();
             int num =1;
+
+            // 답항 뽑는 쿼리
+            query2 = " SELECT ANSWER\n" + //
+                    "FROM answers;";
+
             // 질문과 답항을 출력
             while (resultSet.next()) {
                 if (num%4 == 1) {
@@ -32,13 +38,13 @@ public class PollList {
                 System.out.print(resultSet.getString("ANSWER") + ". ");
                 if (num%4 == 0) {
                     System.out.println();
-                    System.out.print("답 : " );
-                    int first = myObj.nextInt();
+                System.out.print("답 : " );
+                int first = myObj.nextInt(); 
                     que_ans.put(q, String.valueOf(first));
-                }
-                
+            }
+
                 num++;
-                
+
             }
 
         } catch (Exception e) {
