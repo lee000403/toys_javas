@@ -11,7 +11,7 @@ public class PollList {
             ResultSet resultSet;
             String query2;
             ResultSet resultSet2;
-
+       
             // 문제 받는 쿼리
             query = "SELECT QUESTION\n" + //
                     "FROM questions\n" + //
@@ -29,10 +29,10 @@ public class PollList {
                 resultSet2 = statement.executeQuery(query2);
                 while (resultSet2.next()) {
                     System.out.print(resultSet2.getString("ANSWER"));
-                    // System.out.println(); //줄바꿈
                 }
                 System.out.println(); //줄바꿈
                 System.out.println("답 : ");
+               
             }
 
         } catch (Exception e) {
