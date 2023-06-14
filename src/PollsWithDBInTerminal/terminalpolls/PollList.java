@@ -46,13 +46,13 @@ public class PollList {
                 answer = in.nextInt();
                 query = "DELETE \n" + //
                         "FROM statistics;";
-                // statement = connection.createStatement();
-                // ResultSet resultSet3 = statement.executeQuery(query);
+                statement = connection.createStatement();
+                ResultSet resultSet3 = statement.executeQuery(query);
 
                 query = "INSERT INTO statistics\n" + //
                         "(USER_ID, QUESTION_ID, ANSWER_ID, STATISTICS_ID)\n" + //
                         "value\n" + //
-                        "('"+user_id+"'', '"+resultSet.getString("QUESTION_ID")+"', '"+ans_ans.get(String.valueOf(answer))+"', '"+ statPk+"'); ";
+                        "('"+user_id+"', '"+resultSet.getString("QUESTION_ID")+"', '"+ans_ans.get(String.valueOf(answer))+"', '"+ statPk+"'); ";
                 
                 }
             return null;
