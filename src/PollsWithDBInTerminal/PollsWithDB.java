@@ -45,7 +45,9 @@ public class PollsWithDB {
                 // P 랑 Poll 입력시 안에 if 문 실행
                 if (key.equals("P") || key.equals("Poll")) {
                     System.out.println();
-                }
+                    String answers = pollList.pollList(statement);
+                } 
+                
                 // S 랑 Statistic 입력시 else if 문 실행
                 else if (key.equals("S") || key.equals("Statistic")) {
                     ResultSet user_c = pollStatistics.users_count(statement);
