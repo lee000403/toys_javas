@@ -3,7 +3,6 @@ package PollsWithDBInTerminal;
 import java.sql.*;
 import java.util.Scanner;
 
-import PollsWithDBInTerminal.terminalpolls.Commons;
 import PollsWithDBInTerminal.terminalpolls.PollList;
 import PollsWithDBInTerminal.terminalpolls.PollPeople;
 import PollsWithDBInTerminal.terminalpolls.PollStatistics;
