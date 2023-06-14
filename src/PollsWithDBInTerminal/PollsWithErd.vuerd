@@ -3,9 +3,9 @@
     "version": "2.2.11",
     "width": 2000,
     "height": 2000,
-    "scrollTop": -191,
-    "scrollLeft": -395,
-    "zoomLevel": 0.8,
+    "scrollTop": -1,
+    "scrollLeft": -62.66666666666686,
+    "zoomLevel": 1,
     "show": {
       "tableComment": true,
       "columnComment": true,
@@ -141,9 +141,9 @@
         ],
         "ui": {
           "active": false,
-          "left": 263,
+          "left": 268,
           "top": 438,
-          "zIndex": 1,
+          "zIndex": 31,
           "widthName": 60,
           "widthComment": 60
         },
@@ -226,7 +226,7 @@
           {
             "name": "AGE",
             "comment": "나이",
-            "dataType": "VARCHAR(50)",
+            "dataType": "INTEGER",
             "default": "",
             "option": {
               "autoIncrement": false,
@@ -241,17 +241,17 @@
               "pfk": false,
               "widthName": 60,
               "widthComment": 60,
-              "widthDataType": 87.71875,
+              "widthDataType": 60,
               "widthDefault": 60
             },
-            "id": "db5d168d-9859-4522-a529-d9fb0aca4846"
+            "id": "e801371c-cdbc-4dc7-a66e-6ca0e6959b26"
           }
         ],
         "ui": {
           "active": false,
           "left": 148,
           "top": 138,
-          "zIndex": 8,
+          "zIndex": 30,
           "widthName": 60,
           "widthComment": 60
         },
@@ -311,9 +311,9 @@
         ],
         "ui": {
           "active": false,
-          "left": 880,
-          "top": 201,
-          "zIndex": 3,
+          "left": 835,
+          "top": 184,
+          "zIndex": 46,
           "widthName": 78.5654296875,
           "widthComment": 60
         },
@@ -373,9 +373,9 @@
         ],
         "ui": {
           "active": false,
-          "left": 696.7779,
-          "top": 831.3332,
-          "zIndex": 7,
+          "left": 643,
+          "top": 724,
+          "zIndex": 65,
           "widthName": 67.72998046875,
           "widthComment": 60
         },
@@ -408,7 +408,7 @@
           "columnIds": [
             "035a8e89-734e-45bd-9510-714cb23365c6"
           ],
-          "x": 468.068603515625,
+          "x": 473.068603515625,
           "y": 438,
           "direction": "top"
         },
@@ -425,8 +425,8 @@
           "columnIds": [
             "a7367f9a-6b42-482d-b4a3-58f076709f83"
           ],
-          "x": 880,
-          "y": 256,
+          "x": 835,
+          "y": 239,
           "direction": "left"
         },
         "end": {
@@ -434,8 +434,8 @@
           "columnIds": [
             "bdcc4394-ed3f-40cf-aa2b-265538ae3c55"
           ],
-          "x": 673.13720703125,
-          "y": 475.75,
+          "x": 678.13720703125,
+          "y": 513.5,
           "direction": "right"
         },
         "constraintName": "fk_question_to_statistics",
@@ -451,8 +451,8 @@
           "columnIds": [
             "dbdcc37d-6cb0-4bd3-a1d9-07ee0d573c81"
           ],
-          "x": 696.7779,
-          "y": 886.3332,
+          "x": 643,
+          "y": 779,
           "direction": "left"
         },
         "end": {
@@ -460,9 +460,9 @@
           "columnIds": [
             "72c8e491-ad11-4708-8b61-6c383ae67f80"
           ],
-          "x": 673.13720703125,
-          "y": 551.25,
-          "direction": "right"
+          "x": 473.068603515625,
+          "y": 589,
+          "direction": "bottom"
         },
         "constraintName": "fk_answers_to_statistics",
         "visible": true,
