@@ -23,7 +23,11 @@ public class PollList {
         HashMap<String, String> que_ans = new HashMap<String, String>();
         int answer;
         // 질문과 답항을 출력
-        
+        Statement statement2 = connection.createStatement();
+            query = "DELETE \n" + //
+                "FROM statistics\n" +
+                "WHERE USER_ID = '"+user_id+"'";
+            int count3 = statement2.executeUpdate(query);
         while (resultSet.next()) {
             System.out.println();
             statement = connection.createStatement();

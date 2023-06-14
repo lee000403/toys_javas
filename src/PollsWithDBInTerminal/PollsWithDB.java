@@ -36,11 +36,6 @@ public class PollsWithDB {
             PollList pollList = new PollList();
             PollPeople pollPeople = new PollPeople();
 
-            Statement statement2 = connection.createStatement();
-            query = "DELETE \n" + //
-                "FROM statistics";
-            int count3 = statement2.executeUpdate(query);
-
             String key = " "; // key 에 변수 초기화
             System.out.println("------ 작동 key ------");
             System.out.println("(E)xit : 종료");
