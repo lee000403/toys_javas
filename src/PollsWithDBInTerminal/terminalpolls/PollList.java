@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Scanner;
 
+
 public class PollList {
     public String pollList(Statement statement, Connection connection, String users) throws SQLException {
         Scanner in = new Scanner(System.in);
@@ -21,29 +22,44 @@ public class PollList {
 
         HashMap<String, String> ans_ans = new HashMap<String, String>();
         HashMap<String, String> que_ans = new HashMap<String, String>();
-
-        // 질문과 답항을 출력
-        while (resultSet.next()) {
-            System.out.println();
-            statement = connection.createStatement();
-            System.out.println(resultSet.getString("QUESTION"));
-
-            query2 = "SELECT ANSWER, ANSWER_ID\n" + //
-                    "FROM answers AS T_ANSWE";
-            resultSet2 = statement.executeQuery(query2);
-            statement = connection.createStatement();
+            
+            // 질문과 답항을 출력
+            while (resultSet.next()) {
+                System.out.println();
+                statement = connection.createStatement();
+                System.out.println(resultSet.getString("QUESTION"));
+                
+                query2 = "SELECT ANSWER, ANSWER_ID\n" + //
+                        "FROM answers AS T_ANSWE";
+                resultSet2 = statement.executeQuery(query2);
+                statement = connection.createStatement();
             int number = 1;
-            while (resultSet2.next()) {
-                System.out.print(resultSet2.getString("ANSWER"));
+                while (resultSet2.next()) {
+                    System.out.print(resultSet2.getString("ANSWER"));
                 ans_ans.put(String.valueOf(number), resultSet2.getString("ANSWER_ID"));
                 number++;
-            }
-            System.out.println();
-            System.out.print("답 입력 : ");
-            int answer = in.nextInt();
-            que_ans.put(resultSet.getString("QUESTION_ID"), ans_ans.get(String.valueOf(answer)));
-        }
-        System.out.println(que_ans);
-        return null;
+                }
+                System.out.println();
+                System.out.print("답 입력 : ");
+                int answer = in.nextInt();
+                que_ans.put(resultSet.getString("QUESTION_ID"), ans_ans.get(String.valueOf(answer)));
+                }
+                System.out.println(que_ans);
+
+                // DELETE 통계 테이블
+                query = "DELETE \n" + //
+                        "FROM statistics;";
+                
+                // INSERT 통계 테이블 
+                Commons commons = new Commons();
+                String statPk = commons.generateUUID();
+                query = "INSERT INTO statistics\n" + //
+                        "(USER_ID, QUESTION_ID, ANSWER_ID, STATISTICS_ID)\n" + //
+                        "value\n" + //
+                        "('"+user_id+"', 'Q_03', 'A_04', '"+ statPk+"'); ";
+                
+                
+
+            return null;
     }
 }
