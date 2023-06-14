@@ -20,11 +20,12 @@ public class PollPeople {
             System.out.println("- 설문자 가능 명단(가입 완료)");
 
             // 설문자 number 변수 초기화 후 설문 참여자 번호 표시
-            int number = 1;
+            int number = 1; // 설문 참여자 번호를 나타내는 변수 초기값 1로 설정 
             Connection connection = statement.getConnection();
-            Statement statement2 = connection.createStatement();
-            ResultSet resultSet2;
-            String query2;
+          
+            
+            
+
             HashMap<Integer, String> userNumberMap = new HashMap<>();
 
             // 현재 행에서 "USER_NAME" 컬럼의 값을 도출 설문 참여자 이름
@@ -59,8 +60,8 @@ public class PollPeople {
 
         } catch (SQLException e) {
             System.out.println("SQL Exception: " + e.getMessage());
-        } catch (Exception e) {
-            System.out.println("Exception: " + e.getMessage());
+       
         }
+    
     }
 }
