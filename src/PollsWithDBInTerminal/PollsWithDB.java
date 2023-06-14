@@ -3,6 +3,7 @@ package PollsWithDBInTerminal;
 import java.sql.*;
 import java.util.Scanner;
 
+import PollsWithDBInTerminal.terminalpolls.Commons;
 import PollsWithDBInTerminal.terminalpolls.PollList;
 import PollsWithDBInTerminal.terminalpolls.PollPeople;
 import PollsWithDBInTerminal.terminalpolls.PollStatistics;
@@ -34,6 +35,11 @@ public class PollsWithDB {
             PollStatistics pollStatistics = new PollStatistics();
             PollList pollList = new PollList();
             PollPeople pollPeople = new PollPeople();
+
+            Statement statement2 = connection.createStatement();
+            query = "DELETE \n" + //
+                "FROM statistics";
+            int count3 = statement2.executeUpdate(query);
 
             String key = " "; // key 에 변수 초기화
             System.out.println("------ 작동 key ------");
