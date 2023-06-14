@@ -25,7 +25,7 @@ public class PollPeople {
 
             HashMap<Integer, String> userNumberMap = new HashMap<>();
 
-            
+
 
             // 현재 행에서 "USER_NAME" 컬럼의 값을 도출 설문 참여자 이름
             while (resultSet.next()) {
