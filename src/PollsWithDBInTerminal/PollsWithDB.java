@@ -50,7 +50,8 @@ public class PollsWithDB {
                 // S 랑 Statistic 입력시 else if 문 실행
                 else if (key.equals("S") || key.equals("Statistic")) {
                     int user_c = pollStatistics.users_count(statement);
-                    int answer_c = pollStatistics.answer_count(statement);
+                    ResultSet question_c = pollStatistics.question_count(statement);
+                    ResultSet answer_c = pollStatistics.answer_count(statement);
                 }
                 // 그 외 입력 값에 대한 처리.
                 else {
@@ -59,8 +60,7 @@ public class PollsWithDB {
             }
             System.out.println("----- 설문 종료 ------");
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            
+            System.out.println(e.getMessage());
         }
     }
 }
