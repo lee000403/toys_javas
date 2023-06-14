@@ -3,8 +3,13 @@
     "version": "2.2.11",
     "width": 2000,
     "height": 2000,
+<<<<<<< HEAD
     "scrollTop": -1,
     "scrollLeft": -62.66666666666686,
+=======
+    "scrollTop": -63,
+    "scrollLeft": -31,
+>>>>>>> b797f7b640883d9a1f68c4c5dbcbf10d94aefe77
     "zoomLevel": 1,
     "show": {
       "tableComment": true,
@@ -251,7 +256,11 @@
           "active": false,
           "left": 148,
           "top": 138,
+<<<<<<< HEAD
           "zIndex": 30,
+=======
+          "zIndex": 4,
+>>>>>>> b797f7b640883d9a1f68c4c5dbcbf10d94aefe77
           "widthName": 60,
           "widthComment": 60
         },
@@ -313,7 +322,11 @@
           "active": false,
           "left": 835,
           "top": 184,
+<<<<<<< HEAD
           "zIndex": 46,
+=======
+          "zIndex": 2,
+>>>>>>> b797f7b640883d9a1f68c4c5dbcbf10d94aefe77
           "widthName": 78.5654296875,
           "widthComment": 60
         },
@@ -375,7 +388,11 @@
           "active": false,
           "left": 643,
           "top": 724,
+<<<<<<< HEAD
           "zIndex": 65,
+=======
+          "zIndex": 3,
+>>>>>>> b797f7b640883d9a1f68c4c5dbcbf10d94aefe77
           "widthName": 67.72998046875,
           "widthComment": 60
         },
@@ -434,7 +451,11 @@
           "columnIds": [
             "bdcc4394-ed3f-40cf-aa2b-265538ae3c55"
           ],
+<<<<<<< HEAD
           "x": 678.13720703125,
+=======
+          "x": 673.13720703125,
+>>>>>>> b797f7b640883d9a1f68c4c5dbcbf10d94aefe77
           "y": 513.5,
           "direction": "right"
         },
@@ -460,7 +481,11 @@
           "columnIds": [
             "72c8e491-ad11-4708-8b61-6c383ae67f80"
           ],
+<<<<<<< HEAD
           "x": 473.068603515625,
+=======
+          "x": 468.068603515625,
+>>>>>>> b797f7b640883d9a1f68c4c5dbcbf10d94aefe77
           "y": 589,
           "direction": "bottom"
         },
