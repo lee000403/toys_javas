@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 
 public class PollList {
-    public String pollList(Statement statement, Connection connection) throws SQLException {
+    public String pollList(Statement statement, Connection connection, String user_id) throws SQLException {
             Scanner in = new Scanner(System.in);
             String query;
             ResultSet resultSet;
