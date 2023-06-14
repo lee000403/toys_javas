@@ -3,6 +3,7 @@ package PollsWithDBInTerminal.terminalpolls;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class PollList {
@@ -13,7 +14,7 @@ public class PollList {
             ResultSet resultSet;
             String query2;
             ResultSet resultSet2;
-       
+            String q = "QUESTION";
             // 문제 받는 쿼리
             query = "SELECT QUESTION, ANSWER\n" + //
                     "FROM answers  AS T_ANSWE\n" + //
@@ -21,18 +22,21 @@ public class PollList {
                     "ORDER BY QUESTION, ANSWER";
             resultSet = statement.executeQuery(query);
 
+            HashMap <String, String>que_ans = new HashMap<String, String>();
             int num =1;
             // 질문과 답항을 출력
             while (resultSet.next()) {
                 if (num%4 == 1) {
-                    System.out.println(resultSet.getString("QUESTION"));
+                    System.out.println(resultSet.getString("'"+q+"'"));
                 }
-                System.out.print(resultSet.getString("ANSWER"));
+                System.out.print(resultSet.getString("ANSWER") + ". ");
                 if (num%4 == 0) {
                     System.out.println();
                     System.out.print("답 : " );
                     int first = myObj.nextInt();
+                    que_ans.put(q, String.valueOf(first));
                 }
+                
                 num++;
                 
             }
