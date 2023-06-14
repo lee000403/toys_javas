@@ -9,6 +9,8 @@ import java.util.Scanner;
 
 
 public class PollList {
+    private String user_id;
+
     public String pollList(Statement statement, Connection connection) throws SQLException {
             Scanner in = new Scanner(System.in);
             String query;
