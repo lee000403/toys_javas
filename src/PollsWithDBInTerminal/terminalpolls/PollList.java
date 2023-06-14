@@ -10,17 +10,6 @@ import java.util.Scanner;
 
 public class PollList {
     public String pollList(Statement statement, Connection connection, String user_id) throws SQLException {
-        Scanner in = new Scanner(System.in);
-        String query;
-        ResultSet resultSet;
-        String query2;
-        ResultSet resultSet2;
-        // 문제 받는 쿼리
-        query = "SELECT QUESTION, QUESTION_ID\n" + //
-                "FROM questions AS T_QUEST";
-        resultSet = statement.executeQuery(query);
-
-    public String pollList(Statement statement, Connection connection) throws SQLException {
             Scanner in = new Scanner(System.in);
             String query;
             ResultSet resultSet;
