@@ -9,7 +9,6 @@ import java.util.Scanner;
 
 public class PollList {
     public String pollList(Statement statement, Connection connection) throws SQLException {
-        try {
             Scanner in = new Scanner(System.in);
             String query;
             ResultSet resultSet;
@@ -44,13 +43,7 @@ public class PollList {
                 System.out.println(ans_ans);
                 number++;
                 
-            }
-
-        } catch (Exception e) {
-            // TODO: handle exception
-            System.out.println(e.getMessage());
-        }
-        return null;
-
+                }
+            return null;
     }
 }
