@@ -3,10 +3,12 @@ package PollsWithDBInTerminal.terminalpolls;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Scanner;
 
 public class PollList {
     public String pollList(Statement statement) throws SQLException {
         try {
+            Scanner myObj = new Scanner(System.in);
             String query;
             ResultSet resultSet;
             String query2;
@@ -28,11 +30,17 @@ public class PollList {
 
                 resultSet2 = statement.executeQuery(query2);
                 while (resultSet2.next()) {
+                    
                     System.out.print(resultSet2.getString("ANSWER"));
                 }
                 System.out.println(); //줄바꿈
-                System.out.println("답 : ");
-               
+                System.out.print("답 : " );
+                int first = myObj.nextInt(); 
+                System.out.println( first);
+
+                
+
+                
             }
 
         } catch (Exception e) {
