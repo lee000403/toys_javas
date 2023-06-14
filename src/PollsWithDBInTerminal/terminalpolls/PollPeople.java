@@ -13,7 +13,7 @@ public class PollPeople {
         try {
             // 설문자 입력 쿼리
             String query = "SELECT USER_ID, USER\n" +
-                           "FROM users;\n";
+                           "FROM users AS T_USER ;\n";
 
             ResultSet resultSet = statement.executeQuery(query);
 
@@ -23,9 +23,6 @@ public class PollPeople {
             int number = 1; // 설문 참여자 번호를 나타내는 변수 초기값 1로 설정 
             Connection connection = statement.getConnection();
           
-            
-            
-
             HashMap<Integer, String> userNumberMap = new HashMap<>();
 
             // 현재 행에서 "USER_NAME" 컬럼의 값을 도출 설문 참여자 이름
