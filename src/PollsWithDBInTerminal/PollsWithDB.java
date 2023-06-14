@@ -43,11 +43,12 @@ public class PollsWithDB {
             while (!(key.equals("E") || key.equals("Exit"))) {
                 System.out.print("선택 입력 : ");
                 key = in.nextLine(); // key 입력 받기
-                String user_id = pollPeople.users(statement);
+                
 
                 // P 랑 Poll 입력시 안에 if 문 실행
                 if (key.equals("P") || key.equals("Poll")) {
                     System.out.println();
+                    String user_id = pollPeople.users(statement);
                     String answers = pollList.pollList(statement, connection, user_id);
                 }
 

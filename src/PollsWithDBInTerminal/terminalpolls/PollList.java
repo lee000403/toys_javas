@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 
 public class PollList {
-    public String pollList(Statement statement, Connection connection, String users) throws SQLException {
+    public String pollList(Statement statement, Connection connection, String user_id) throws SQLException {
         Scanner in = new Scanner(System.in);
         String query;
         ResultSet resultSet;
@@ -22,7 +22,9 @@ public class PollList {
 
         HashMap<String, String> ans_ans = new HashMap<String, String>();
         HashMap<String, String> que_ans = new HashMap<String, String>();
-            
+        Commons commons = new Commons();
+        String statPk = commons.generateUUID();
+        int answer;
             // 질문과 답항을 출력
             while (resultSet.next()) {
                 System.out.println();
@@ -33,33 +35,26 @@ public class PollList {
                         "FROM answers AS T_ANSWE";
                 resultSet2 = statement.executeQuery(query2);
                 statement = connection.createStatement();
-            int number = 1;
+                int number = 1;
                 while (resultSet2.next()) {
                     System.out.print(resultSet2.getString("ANSWER"));
-                ans_ans.put(String.valueOf(number), resultSet2.getString("ANSWER_ID"));
-                number++;
-                }
+                    ans_ans.put(String.valueOf(number), resultSet2.getString("ANSWER_ID"));
+                    number++;
+                    }
                 System.out.println();
                 System.out.print("답 입력 : ");
-                int answer = in.nextInt();
-                que_ans.put(resultSet.getString("QUESTION_ID"), ans_ans.get(String.valueOf(answer)));
-                }
-                System.out.println(que_ans);
-
-                // DELETE 통계 테이블
+                answer = in.nextInt();
                 query = "DELETE \n" + //
                         "FROM statistics;";
-                
-                // INSERT 통계 테이블 
-                Commons commons = new Commons();
-                String statPk = commons.generateUUID();
+                // statement = connection.createStatement();
+                // ResultSet resultSet3 = statement.executeQuery(query);
+
                 query = "INSERT INTO statistics\n" + //
                         "(USER_ID, QUESTION_ID, ANSWER_ID, STATISTICS_ID)\n" + //
                         "value\n" + //
-                        "('"+user_id+"', 'Q_03', 'A_04', '"+ statPk+"'); ";
+                        "('"+user_id+"'', '"+resultSet.getString("QUESTION_ID")+"', '"+ans_ans.get(String.valueOf(answer))+"', '"+ statPk+"'); ";
                 
-                
-
+                }
             return null;
     }
 }
