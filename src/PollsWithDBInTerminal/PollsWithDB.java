@@ -48,7 +48,7 @@ public class PollsWithDB {
                 }
                 // S 랑 Statistic 입력시 else if 문 실행
                 else if (key.equals("S") || key.equals("Statistic")) {
-                    int user_c = pollStatistics.users_count(statement);
+                    ResultSet user_c = pollStatistics.users_count(statement);
                     ResultSet question_c = pollStatistics.question_count(statement);
                     ResultSet answer_c = pollStatistics.answer_count(statement);
                 }
