@@ -26,11 +26,12 @@ public class PollPeople {
             String userId = resultSet.getString("USER_ID");
             String userName = resultSet.getString("USER");
             // 설문참여자의 번호 (number)와 이름 (userName) 출력
-            System.out.print(number + ". " + userName);
+            System.out.print(number + ", " + userName + " ");
             // 설문참여자의 번호를 1씩 증가
             userNumberMap.put(number, userId);
             number++;
         }
+        System.out.println();
         while (true) {
             System.out.print("- 설문자 번호 입력 : ");
             user_number = in.nextInt();
