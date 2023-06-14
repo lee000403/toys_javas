@@ -2,17 +2,17 @@ package PollsWithDBInTerminal.terminalpolls;
 import java.sql.*;
 
 public class PollStatistics {
-    public int users_count(Statement statement) throws SQLException {
+    public ResultSet users_count(Statement statement) throws SQLException {
         String query = "SELECT COUNT(T_USERS.USER_ID) AS CNT\n" + //
                 "FROM USERS AS T_USERS";
         ResultSet resultSet = statement.executeQuery(query);
         while (resultSet.next()) {
             System.out.println("-- 총 설문자 : " + resultSet.getInt("CNT"));
         }
-        return 0;
+        return resultSet;
     }
     public ResultSet question_count(Statement statement) throws SQLException {
-        String query = "SELECT T_GROUP.QUESTION, T_GROUP.ANSWER_ID, T_GROUP.CNT, t_ans.ANSWER\n" + //
+        String query = "SELECT T_GROUP.QUESTION, T_GROUP.ANSWER_ID, T_GROUP.CNT, T_ANS.ANSWER\n" + //
                 "FROM (\n" + //
                 "    SELECT QUESTION, ANSWER_ID, COUNT(ANSWER_ID) AS CNT\n" + //
                 "    FROM statistics AS T_STATI\n" + //
@@ -30,14 +30,14 @@ public class PollStatistics {
                 "    GROUP BY QUESTION\n" + //
                 ") AS T_MAX \n" + //
                 "ON T_GROUP.QUESTION = T_MAX.QUESTION AND T_GROUP.CNT = T_MAX.MAX_CNT\n" + //
-                "join answers as t_ans\n" + //
-                "on T_GROUP.ANSWER_ID = t_ans.ANSWER_ID\n" + //
+                "join ANSWERS as T_ANS\n" + //
+                "on T_GROUP.ANSWER_ID = T_ANS.ANSWER_ID\n" + //
                 ";";
         ResultSet resultSet = statement.executeQuery(query);
         System.out.println("-- 문항 내에서 최대 갯수 번호");
         while (resultSet.next()) {
             System.out.println(resultSet.getString("T_GROUP.QUESTION") 
-            + "    --> " + resultSet.getString("t_ans.ANSWER"));
+            + "    --> " + resultSet.getString("T_ANS.ANSWER"));
         }
         return resultSet;
     }
@@ -49,6 +49,8 @@ public class PollStatistics {
                 "GROUP BY T_ANS.ANSWER_ID\n" + //
                 ";";
         ResultSet resultSet = statement.executeQuery(query);
+        System.out.println();
+        System.out.println("-- 답항 중심");
         while (resultSet.next()) {
             System.out.println(resultSet.getString("T_ANS.ANSWER") + "    --> " + resultSet.getString("CNT"));
         }
