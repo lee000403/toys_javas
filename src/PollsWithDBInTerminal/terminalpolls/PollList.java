@@ -1,5 +1,6 @@
 package PollsWithDBInTerminal.terminalpolls;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -7,37 +8,41 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class PollList {
-    public String pollList(Statement statement) throws SQLException {
+    public String pollList(Statement statement, Connection connection) throws SQLException {
         try {
-            Scanner myObj = new Scanner(System.in);
+            Scanner in = new Scanner(System.in);
             String query;
             ResultSet resultSet;
             String query2;
             ResultSet resultSet2;
-            String q = "QUESTION";
             // 문제 받는 쿼리
-            query = "SELECT QUESTION, ANSWER\n" + //
-                    "FROM answers  AS T_ANSWE\n" + //
-                    "JOIN questions AS T_QUEST\n" + //
-                    "ORDER BY QUESTION, ANSWER";
+            query = "SELECT QUESTION, QUESTION_ID\n" + //
+                    "FROM questions AS T_QUEST";
             resultSet = statement.executeQuery(query);
-
+            
+            HashMap <String, String>ans_ans = new HashMap<String, String>();
             HashMap <String, String>que_ans = new HashMap<String, String>();
-            int num =1;
+            
+            int number = 1;
             // 질문과 답항을 출력
             while (resultSet.next()) {
-                if (num%4 == 1) {
-                    System.out.println(resultSet.getString("'"+q+"'"));
-                }
-                System.out.print(resultSet.getString("ANSWER") + ". ");
-                if (num%4 == 0) {
-                    System.out.println();
-                    System.out.print("답 : " );
-                    int first = myObj.nextInt();
-                    que_ans.put(q, String.valueOf(first));
-                }
+                statement = connection.createStatement();
+                System.out.println(resultSet.getString("QUESTION"));
                 
-                num++;
+                query2 = "SELECT ANSWER, ANSWER_ID\n" + //
+                    "FROM answers AS T_ANSWE";
+                resultSet2 = statement.executeQuery(query2);
+                statement = connection.createStatement();
+                while (resultSet2.next()) {
+                    System.out.print(resultSet2.getString("ANSWER"));
+                }
+                System.out.println();
+                System.out.print("답 입력 : ");
+                int answer = in.nextInt();
+                que_ans.put(resultSet.getString("ANSWER_ID"), String.valueOf(number));
+                ans_ans.put(resultSet.getString("QUESTION_ID"), String.valueOf(answer));
+                System.out.println(ans_ans);
+                number++;
                 
             }
 
