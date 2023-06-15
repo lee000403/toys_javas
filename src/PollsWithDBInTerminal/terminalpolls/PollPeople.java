@@ -33,6 +33,7 @@ public class PollPeople {
         }
         resultSet.close();
         System.out.println();
+        // 설문자 번호 입력 LOOP
         while (true) {
             System.out.print("- 설문자 번호 입력 : ");
             user_number = in.nextInt();
@@ -40,6 +41,7 @@ public class PollPeople {
                     "FROM USERS";
             Statement statement2 = connection.createStatement();
             ResultSet resultSet2 = statement2.executeQuery(query);
+            // 선택 입력 외 값 입력시 BREAK문 작동 
             if (resultSet2.next()) {
                 String user_num = resultSet2.getString("CNT");
                 if (user_number > Integer.parseInt(user_num)) {
@@ -49,6 +51,7 @@ public class PollPeople {
                 }
             }
         }
+        // USER_ID 값 얻기
         user_id = userNumberMap.get(user_number);
         System.out.println("-- 설문 시작");
         System.out.println("\t--> 아래 참조 : poll contents example");
