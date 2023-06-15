@@ -4,8 +4,12 @@ import java.sql.*;
 
 public class PollStatistics {
     public ResultSet users_count(Statement statement) throws SQLException {
-        String query = "SELECT COUNT(T_USERS.USER_ID) AS CNT\n" + //
-                "FROM USERS AS T_USERS";
+        String query = "select count(group_cnt.user_id_cnt) as CNT\n" + //
+                "from (\n" + //
+                "SELECT count(user_id) as user_id_cnt\n" + //
+                "FROM statistics\n" + //
+                "group by user_id\n" + //
+                ") as group_cnt";
         ResultSet resultSet = statement.executeQuery(query);
         while (resultSet.next()) {
             System.out.println("-- 총 설문자 : " + resultSet.getInt("CNT"));

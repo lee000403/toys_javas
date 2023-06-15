@@ -49,7 +49,7 @@ public class PollsWithDB {
                 if (key.equals("P") || key.equals("Poll")) {
                     System.out.println();
                     String user_id = pollPeople.users(statement, connection);
-                    String answers = pollList.pollList(statement, connection, user_id);
+                    pollList.pollList(statement, connection, user_id);
                 }
 
                 // S 랑 Statistic 입력시 else if 문 실행
