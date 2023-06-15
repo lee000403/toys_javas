@@ -11,18 +11,21 @@
 
 ## MEMBER & PART
 - 🥯김민정: 설문자 명단 파악  
-⁕[PollPeople](https://github.com/Ryuyeonjoo/Team_Project/blob/main/src/SurveyMain.java)  
+⁕[PollPeople](src/PollsWithDBInTerminal/terminalpolls/PollPeople.java)  
 
 - 🌮오가배: 설문지 문항 및 답변    
-⁕ [PollList](https://github.com/Ryuyeonjoo/Team_Project/blob/main/src/Survey.java)  
-⁕ [SurveyQuestion](https://github.com/Ryuyeonjoo/Team_Project/blob/main/src/SurveyQuestion.java)
+⁕ [PollList](src/PollsWithDBInTerminal/terminalpolls/PollList.java)  
 
 - 🥞이동환: 설문자별 답변 결과 및 질문별 총 답변 수 통계  
-⁕ [PollStatistics](https://github.com/Ryuyeonjoo/Team_Project/blob/main/src/SurveyTotal.java)  
-⁕ [PollsWithDB](https://github.com/Ryuyeonjoo/Team_Project/blob/main/src/Users.java)
+⁕ [PollStatistics](src/PollsWithDBInTerminal/terminalpolls/PollStatistics.java)  
+⁕ [PollsWithDB](src/PollsWithDBInTerminal/PollsWithDB.java)
 
 ## REFER
-- 🍩[화면 정의서](https://github.com/Ryuyeonjoo/Team_Project/blob/main/Survey/Final/%ED%99%94%EB%A9%B4%EC%A0%95%EC%9D%98%EC%84%9C_%EA%B9%80%EB%B0%B0%EB%A5%98.pdf)
-- 🍮[요구사항 정의서](https://github.com/Ryuyeonjoo/Team_Project/blob/main/Survey/Final/%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD%EC%A0%95%EC%9D%98%EC%84%9C_%EA%B9%80%EB%B0%B0%EB%A5%98.pdf)
-- 🧃[ERD](https://github.com/Ryuyeonjoo/Team_Project/blob/main/Survey/Final/khcafe_survey.png)
+- 🍩[화면 정의서](https://drive.google.com/drive/u/1/folders/1NF-mGKzbmYy0t0jmHG5fKsPn86ncqlXG)
+- 🧃[ERD](src/PollsWithDB_ERD.PNG)
+
+## THE END...
+- 🍞프로젝트 소감  
+ 협동과 소통의 중요성을 알게된 프로젝트 경험
+ 🤞힘을 합하면 못해낼 것이 없다🤞
 
