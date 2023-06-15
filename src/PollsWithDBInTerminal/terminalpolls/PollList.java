@@ -24,10 +24,10 @@ public class PollList {
         int answer;
         // 질문과 답항을 출력
         Statement statement2 = connection.createStatement();
-            query = "DELETE \n" + //
+        query = "DELETE \n" + //
                 "FROM statistics\n" +
-                "WHERE USER_ID = '"+user_id+"'";
-            int count3 = statement2.executeUpdate(query);
+                "WHERE USER_ID = '" + user_id + "'";
+        int count3 = statement2.executeUpdate(query);
         while (resultSet.next()) {
             System.out.println();
             statement = connection.createStatement();
@@ -47,13 +47,17 @@ public class PollList {
             System.out.println();
             System.out.print("답 입력 : ");
             answer = in.nextInt();
+            if (answer > 4) {
+                System.out.println("잘못 입력 하였습니다. \n" + "처음으로 돌아 갑니다. ");
+                break;
+            }
             Commons commons = new Commons();
             String statPk = commons.generateUUID();
             query = "INSERT INTO statistics\n" + //
                     "(USER_ID, QUESTION_ID, ANSWER_ID, STATISTICS_ID)\n" + //
                     "value\n" + //
                     "('" + user_id + "', '" + resultSet.getString("QUESTION_ID") + "', '"
-                    + ans_ans.get(String.valueOf(answer)) + "', '"+statPk+"')";
+                    + ans_ans.get(String.valueOf(answer)) + "', '" + statPk + "')";
             int count4 = statement.executeUpdate(query);
 
         }

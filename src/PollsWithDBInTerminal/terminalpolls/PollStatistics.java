@@ -13,123 +13,44 @@ public class PollStatistics {
         return resultSet;
     }
 
-    public ResultSet question_count(Statement statement) throws SQLException {
-        String query = "SELECT T_ANSWE.ANSWER, END_CNT.QUESTION\n" + //
-                "FROM (select t_quest.QUESTION_ID, t_quest.QUESTION, MAX(group_cnt.CNT) AS MAX_CNT\n" + //
-                "\t\tfrom (\n" + //
-                "\t\t\tselect ANSWER_ID, QUESTION_ID , count(*) as cnt\n" + //
-                "\t\t\tfrom statistics\n" + //
-                "\t\t\tWHERE QUESTION_ID = 'Q_01'\n" + //
-                "\t\t\tgroup by ANSWER_ID, QUESTION_ID\n" + //
-                "\t\t) as group_cnt\n" + //
-                "\t\tjoin questions as t_quest\n" + //
-                "\t\ton t_quest.QUESTION_ID = group_cnt.QUESTION_ID\n" + //
-                "\t\tjoin answers as t_answe\n" + //
-                "\t\ton t_answe.ANSWER_ID = group_cnt.ANSWER_ID\n" + //
-                "        GROUP BY group_cnt.QUESTION_ID, t_quest.QUESTION\n" + //
-                "\t) AS END_CNT\n" + //
-                "JOIN (\n" + //
-                "\tselect ANSWER_ID, QUESTION_ID , count(*) as cnt\n" + //
-                "\tfrom statistics\n" + //
-                "\tgroup by ANSWER_ID, QUESTION_ID\n" + //
-                ") AS T_QUE\n" + //
-                "ON END_CNT.MAX_CNT = T_QUE.CNT AND END_CNT.QUESTION_ID = T_QUE.QUESTION_ID\n" + //
-                "JOIN answers AS T_ANSWE\n" + //
-                "ON T_QUE.ANSWER_ID = T_ANSWE.ANSWER_ID\n" + //
-                "LIMIT 1\n" + //
-                ";";
+    public ResultSet question_count(Statement statement, Connection connection) throws SQLException {
+        String query = "SELECT QUESTION_ID\n" + //
+                "FROM questions AS T_QUEST";
         ResultSet resultSet = statement.executeQuery(query);
         System.out.println("-- 문항 내에서 최대 갯수 번호");
         while (resultSet.next()) {
-            System.out.println(resultSet.getString("END_CNT.QUESTION")
-                    + "    --> " + resultSet.getString("T_ANSWE.ANSWER"));
-        }
-        query = "SELECT T_ANSWE.ANSWER, END_CNT.QUESTION\n" + //
-                "FROM (select t_quest.QUESTION_ID, t_quest.QUESTION, MAX(group_cnt.CNT) AS MAX_CNT\n" + //
-                "\t\tfrom (\n" + //
-                "\t\t\tselect ANSWER_ID, QUESTION_ID , count(*) as cnt\n" + //
-                "\t\t\tfrom statistics\n" + //
-                "\t\t\tWHERE QUESTION_ID = 'Q_02'\n" + //
-                "\t\t\tgroup by ANSWER_ID, QUESTION_ID\n" + //
-                "\t\t) as group_cnt\n" + //
-                "\t\tjoin questions as t_quest\n" + //
-                "\t\ton t_quest.QUESTION_ID = group_cnt.QUESTION_ID\n" + //
-                "\t\tjoin answers as t_answe\n" + //
-                "\t\ton t_answe.ANSWER_ID = group_cnt.ANSWER_ID\n" + //
-                "        GROUP BY group_cnt.QUESTION_ID, t_quest.QUESTION\n" + //
-                "\t) AS END_CNT\n" + //
-                "JOIN (\n" + //
-                "\tselect ANSWER_ID, QUESTION_ID , count(*) as cnt\n" + //
-                "\tfrom statistics\n" + //
-                "\tgroup by ANSWER_ID, QUESTION_ID\n" + //
-                ") AS T_QUE\n" + //
-                "ON END_CNT.MAX_CNT = T_QUE.CNT AND END_CNT.QUESTION_ID = T_QUE.QUESTION_ID\n" + //
-                "JOIN answers AS T_ANSWE\n" + //
-                "ON T_QUE.ANSWER_ID = T_ANSWE.ANSWER_ID\n" + //
-                "LIMIT 1\n" + //
-                ";";
-        resultSet = statement.executeQuery(query);
-        while (resultSet.next()) {
-            System.out.println(resultSet.getString("END_CNT.QUESTION")
-                    + "    --> " + resultSet.getString("T_ANSWE.ANSWER"));
-        }
-        query = "SELECT T_ANSWE.ANSWER, END_CNT.QUESTION\n" + //
-                "FROM (select t_quest.QUESTION_ID, t_quest.QUESTION, MAX(group_cnt.CNT) AS MAX_CNT\n" + //
-                "\t\tfrom (\n" + //
-                "\t\t\tselect ANSWER_ID, QUESTION_ID , count(*) as cnt\n" + //
-                "\t\t\tfrom statistics\n" + //
-                "\t\t\tWHERE QUESTION_ID = 'Q_03'\n" + //
-                "\t\t\tgroup by ANSWER_ID, QUESTION_ID\n" + //
-                "\t\t) as group_cnt\n" + //
-                "\t\tjoin questions as t_quest\n" + //
-                "\t\ton t_quest.QUESTION_ID = group_cnt.QUESTION_ID\n" + //
-                "\t\tjoin answers as t_answe\n" + //
-                "\t\ton t_answe.ANSWER_ID = group_cnt.ANSWER_ID\n" + //
-                "        GROUP BY group_cnt.QUESTION_ID, t_quest.QUESTION\n" + //
-                "\t) AS END_CNT\n" + //
-                "JOIN (\n" + //
-                "\tselect ANSWER_ID, QUESTION_ID , count(*) as cnt\n" + //
-                "\tfrom statistics\n" + //
-                "\tgroup by ANSWER_ID, QUESTION_ID\n" + //
-                ") AS T_QUE\n" + //
-                "ON END_CNT.MAX_CNT = T_QUE.CNT AND END_CNT.QUESTION_ID = T_QUE.QUESTION_ID\n" + //
-                "JOIN answers AS T_ANSWE\n" + //
-                "ON T_QUE.ANSWER_ID = T_ANSWE.ANSWER_ID\n" + //
-                "LIMIT 1\n" + //
-                ";";
-        resultSet = statement.executeQuery(query);
-        while (resultSet.next()) {
-            System.out.println(resultSet.getString("END_CNT.QUESTION")
-                    + "    --> " + resultSet.getString("T_ANSWE.ANSWER"));
-        }
-        query = "SELECT T_ANSWE.ANSWER, END_CNT.QUESTION\n" + //
-                "FROM (select t_quest.QUESTION_ID, t_quest.QUESTION, MAX(group_cnt.CNT) AS MAX_CNT\n" + //
-                "\t\tfrom (\n" + //
-                "\t\t\tselect ANSWER_ID, QUESTION_ID , count(*) as cnt\n" + //
-                "\t\t\tfrom statistics\n" + //
-                "\t\t\tWHERE QUESTION_ID = 'Q_04'\n" + //
-                "\t\t\tgroup by ANSWER_ID, QUESTION_ID\n" + //
-                "\t\t) as group_cnt\n" + //
-                "\t\tjoin questions as t_quest\n" + //
-                "\t\ton t_quest.QUESTION_ID = group_cnt.QUESTION_ID\n" + //
-                "\t\tjoin answers as t_answe\n" + //
-                "\t\ton t_answe.ANSWER_ID = group_cnt.ANSWER_ID\n" + //
-                "        GROUP BY group_cnt.QUESTION_ID, t_quest.QUESTION\n" + //
-                "\t) AS END_CNT\n" + //
-                "JOIN (\n" + //
-                "\tselect ANSWER_ID, QUESTION_ID , count(*) as cnt\n" + //
-                "\tfrom statistics\n" + //
-                "\tgroup by ANSWER_ID, QUESTION_ID\n" + //
-                ") AS T_QUE\n" + //
-                "ON END_CNT.MAX_CNT = T_QUE.CNT AND END_CNT.QUESTION_ID = T_QUE.QUESTION_ID\n" + //
-                "JOIN answers AS T_ANSWE\n" + //
-                "ON T_QUE.ANSWER_ID = T_ANSWE.ANSWER_ID\n" + //
-                "LIMIT 1\n" + //
-                ";";
-        resultSet = statement.executeQuery(query);
-        while (resultSet.next()) {
-            System.out.println(resultSet.getString("END_CNT.QUESTION")
-                    + "    --> " + resultSet.getString("T_ANSWE.ANSWER"));
+            String que = resultSet.getString("QUESTION_ID");
+
+            query = "SELECT T_ANSWE.ANSWER, END_CNT.QUESTION\n" + //
+                    "FROM (select t_quest.QUESTION_ID, t_quest.QUESTION, MAX(group_cnt.CNT) AS MAX_CNT\n" + //
+                    "\t\tfrom (\n" + //
+                    "\t\t\tselect ANSWER_ID, QUESTION_ID , count(*) as cnt\n" + //
+                    "\t\t\tfrom statistics\n" + //
+                    "\t\t\tWHERE QUESTION_ID = '"+que+"'\n" + //
+                    "\t\t\tgroup by ANSWER_ID, QUESTION_ID\n" + //
+                    "\t\t) as group_cnt\n" + //
+                    "\t\tjoin questions as t_quest\n" + //
+                    "\t\ton t_quest.QUESTION_ID = group_cnt.QUESTION_ID\n" + //
+                    "\t\tjoin answers as t_answe\n" + //
+                    "\t\ton t_answe.ANSWER_ID = group_cnt.ANSWER_ID\n" + //
+                    "        GROUP BY group_cnt.QUESTION_ID, t_quest.QUESTION\n" + //
+                    "\t) AS END_CNT\n" + //
+                    "JOIN (\n" + //
+                    "\tselect ANSWER_ID, QUESTION_ID , count(*) as cnt\n" + //
+                    "\tfrom statistics\n" + //
+                    "\tgroup by ANSWER_ID, QUESTION_ID\n" + //
+                    ") AS T_QUE\n" + //
+                    "ON END_CNT.MAX_CNT = T_QUE.CNT AND END_CNT.QUESTION_ID = T_QUE.QUESTION_ID\n" + //
+                    "JOIN answers AS T_ANSWE\n" + //
+                    "ON T_QUE.ANSWER_ID = T_ANSWE.ANSWER_ID\n" + //
+                    "LIMIT 1\n";
+            Statement statement2 = connection.createStatement();
+            ResultSet resultSet2 = statement2.executeQuery(query);
+            
+            while (resultSet2.next()) {
+                System.out.println(resultSet2.getString("END_CNT.QUESTION")
+                        + "    --> " + resultSet2.getString("T_ANSWE.ANSWER"));
+            }
         }
         return resultSet;
     }

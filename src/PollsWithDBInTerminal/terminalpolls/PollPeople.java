@@ -5,7 +5,7 @@ import java.util.Scanner;
 import java.util.HashMap;
 
 public class PollPeople {
-    public String users(Statement statement) throws SQLException {
+    public String users(Statement statement, Connection connection) throws SQLException {
         Scanner in = new Scanner(System.in);
         // 설문자 입력 쿼리
         String query = "SELECT USER_ID, USER\n" +
@@ -31,19 +31,25 @@ public class PollPeople {
             userNumberMap.put(number, userId);
             number++;
         }
+        resultSet.close();
         System.out.println();
         while (true) {
             System.out.print("- 설문자 번호 입력 : ");
             user_number = in.nextInt();
-            if (user_number > 4) {
-                System.out.println("-Error- 확인후 입력 필요");
-            }
-            else{
-                break;
+            query = "SELECT COUNT(*) AS CNT\n" +
+                    "FROM USERS";
+            Statement statement2 = connection.createStatement();
+            ResultSet resultSet2 = statement2.executeQuery(query);
+            if (resultSet2.next()) {
+                String user_num = resultSet2.getString("CNT");
+                if (user_number > Integer.parseInt(user_num)) {
+                    System.out.println("-Error- 확인후 입력 필요");
+                } else {
+                    break;
+                }
             }
         }
         user_id = userNumberMap.get(user_number);
-        System.out.println(user_id);
         System.out.println("-- 설문 시작");
         System.out.println("\t--> 아래 참조 : poll contents example");
         return user_id;
